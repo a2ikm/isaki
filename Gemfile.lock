@@ -30,6 +30,10 @@ GEM
       activemodel (= 4.2.0)
       activesupport (= 4.2.0)
       arel (~> 6.0)
+    activerecord-mysql-awesome (0.0.7)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
+      mysql2 (>= 0.3.18)
     activesupport (4.2.0)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -153,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-mysql-awesome
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)

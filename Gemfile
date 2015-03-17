@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 
 # db
 gem 'mysql2'
+gem 'activerecord-mysql-awesome'
 
 # views
 gem 'slim-rails'
