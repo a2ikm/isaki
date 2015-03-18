@@ -19,6 +19,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'quiet_assets'
 
+# git
+gem 'rugged'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
