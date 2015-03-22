@@ -14,7 +14,6 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require immutable/dist/immutable.js
 //= require react
 //= require react_ujs
 //= require components
