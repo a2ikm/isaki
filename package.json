@@ -1,19 +1,7 @@
 {
-  "name": "isaki",
-  "version": "1.0.0",
-  "description": "== README",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "0.10.33",
+    "npm": "2.7.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/a2ikm/isaki.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/a2ikm/isaki/issues"
-  },
-  "homepage": "https://github.com/a2ikm/isaki"
+  "private": true
 }
