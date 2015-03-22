@@ -16,6 +16,14 @@ class Post < ActiveRecord::Base
     @entries = entries
   end
 
+  def entries_attributes=(attributes)
+    self.entries = attributes.map { |(i, attrs)|
+      Entry.new(attrs)
+    }.select { |entry|
+      entry.present?
+    }
+  end
+
   private
 
     def create_repository
