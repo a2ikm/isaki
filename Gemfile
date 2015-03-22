@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'quiet_assets'
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
 
 # git
 gem 'rugged'
