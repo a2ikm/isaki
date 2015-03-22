@@ -7,6 +7,10 @@ class Post < ActiveRecord::Base
     @repository ||= Repository.new(self)
   end
 
+  def entries
+    @entries ||= repository.head_entries
+  end
+
   private
 
     def create_repository

@@ -1,5 +1,5 @@
 class Repository
-  attr_reader :post
+  attr_reader :post, :repository
 
   AlreadyCreated = Class.new(StandardError)
 
@@ -20,7 +20,7 @@ class Repository
   end
 
   def exist?
-    path.exist?
+    post.persisted? && path.exist?
   end
 
   def create!
@@ -28,5 +28,19 @@ class Repository
 
     @repository = Rugged::Repository.init_at(path.to_s, :base)
     self
+  end
+
+  def head_entries
+    entries = []
+    return entries unless exist?
+
+    repository.head.target.tree.each_blob do |entry|
+      entries << Entry.new(
+        path:     entry[:name],
+        content:  repository.lookup(entry[:oid]).content.force_encoding("UTF-8")
+      )
+    end
+
+    entries
   end
 end
