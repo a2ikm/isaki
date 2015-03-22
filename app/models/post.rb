@@ -5,6 +5,10 @@ class Post < ActiveRecord::Base
   before_create :create_repository
   after_save :commit_entries
 
+  def to_param
+    name
+  end
+
   def repository
     @repository ||= Repository.new(self)
   end
