@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name,        presence: true
+  validates :description, presence: true
 
   before_create :create_repository
   after_save :commit_entries
