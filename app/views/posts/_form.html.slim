@@ -9,4 +9,13 @@
   .field
     = f.label :name
     = f.text_field :name
+
+  = f.fields_for :entries do |g|
+    .field
+      = g.label :path
+      = g.text_field :path
+    .field
+      = g.label :content
+      = g.text_area :content
+
   .actions = f.submit
