@@ -3,9 +3,13 @@ class Post < ActiveRecord::Base
 
   before_create :create_repository
 
+  def repository
+    @repository ||= Repository.new(self)
+  end
+
   private
 
     def create_repository
-      @repository = Repository.new(self).create!
+      repository.create!
     end
 end
