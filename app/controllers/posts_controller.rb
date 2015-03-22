@@ -65,13 +65,13 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by!(name: params[:name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(
-        :name, :description,
+        :description,
         entries_attributes: [:path, :content]
       )
     end

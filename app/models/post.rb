@@ -1,9 +1,13 @@
 class Post < ActiveRecord::Base
-  validates :name,        presence: true
   validates :description, presence: true
 
+  before_create :initialize_name
   before_create :create_repository
   after_save :commit_entries
+
+  def to_param
+    name
+  end
 
   def repository
     @repository ||= Repository.new(self)
@@ -26,6 +30,12 @@ class Post < ActiveRecord::Base
   end
 
   private
+
+    require "securerandom"
+
+    def initialize_name
+      self.name = SecureRandom.hex
+    end
 
     def create_repository
       repository.create!
