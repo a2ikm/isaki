@@ -1,0 +1,16 @@
+{
+  "name": "isaki",
+  "version": "0.0.0",
+  "homepage": "https://github.com/a2ikm/isaki",
+  "authors": [
+    "Masato Ikeda <masato.ikeda@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
