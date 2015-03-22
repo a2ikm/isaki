@@ -12,6 +12,10 @@ html
       .container
         .navbar-header
           = link_to "Isaki", posts_path, class: "navbar-brand"
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li = link_to new_post_path do
+              span.glyphicon.glyphicon-plus
     .container
       .row
         .col-md-12
