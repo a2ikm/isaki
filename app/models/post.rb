@@ -29,6 +29,14 @@ class Post < ActiveRecord::Base
     }
   end
 
+  def title
+    if entry = entries.find { |e| e.path.present? }
+      entry.path
+    else
+      "post:#{name}"
+    end
+  end
+
   private
 
     require "securerandom"
