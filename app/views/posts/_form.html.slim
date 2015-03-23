@@ -8,12 +8,5 @@
           - @post.errors.full_messages.each do |message|
             li.text-danger = message
 
+  = react_component("PostForm", { post: @post.to_json, entries: @post.entries.to_json }, { prerender: true })
 
-  = f.text_area :description
-
-  = f.fields_for :entries do |g|
-    = g.text_field :path
-    = g.text_area :content
-
-  = f.form_group do
-    = f.primary
