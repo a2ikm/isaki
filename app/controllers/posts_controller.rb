@@ -27,14 +27,15 @@ class PostsController < ApplicationController
   def create
     @post_form = PostForm.new(post_params)
 
+    @post_form.save!
     respond_to do |format|
-      if @post_form.save!
-        format.html { redirect_to @post_form.post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post_form.post }
-      else
-        format.html { render :new }
-        format.json { render json: @post_form.post.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @post_form.post, notice: 'Post was successfully created.' }
+      format.json { render :show, status: :created, location: @post_form.post }
+    end
+  rescue PostForm::Invalid => e
+    respond_to do |format|
+      format.html { render :new }
+      format.json { render json: @post_form.post.errors, status: :unprocessable_entity }
     end
   end
 
@@ -42,15 +43,16 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     @post_form = PostForm.build_from_post(@post)
+    @post_form.update!(post_params)
 
     respond_to do |format|
-      if @post_form.update!(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      format.json { render :show, status: :ok, location: @post }
+    end
+  rescue PostForm::Invalid => e
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @post.errors, status: :unprocessable_entity }
     end
   end
 

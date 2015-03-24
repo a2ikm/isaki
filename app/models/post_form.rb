@@ -1,7 +1,12 @@
 class PostForm
   include ActiveModel::Model
 
+  Invalid = Class.new(StandardError)
+
   attr_accessor :post, :description, :entries
+
+  validates :entries, presence: true
+  validate :entries_cant_be_empty
 
   class <<self
     def build_from_post(post)
@@ -57,8 +62,13 @@ class PostForm
 
   def save!
     Post.transaction do
+      validate!
       new_record? ? _create : _update
     end
+  end
+
+  def validate!
+    post.valid? && self.valid? || raise(Invalid)
   end
 
   private
@@ -87,5 +97,11 @@ class PostForm
 
     def commit_entries
       post.repository.commit(entries)
+    end
+
+    def entries_cant_be_empty
+      if entries.any?(&:empty?)
+        errors.add(:base, "Files can't be blank.")
+      end
     end
 end

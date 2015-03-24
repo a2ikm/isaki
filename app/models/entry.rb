@@ -3,6 +3,8 @@ class Entry
 
   attr_accessor :path, :content
 
+  validates :content, presence: true
+
   def initialize(attributes = {})
     super
     @path ||= nil
@@ -14,6 +16,10 @@ class Entry
       "path"    => path,
       "content" => content,
     }
+  end
+
+  def empty?
+    content.blank?
   end
 
   private
