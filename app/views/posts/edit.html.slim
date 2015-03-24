@@ -1,3 +1,4 @@
 h1 Editing #{link_to @post.title, @post}
 
-== render 'form'
+= bootstrap_form_for @post_form, url: post_path(@post_form), method: "PATCH" do |f|
+  == render 'form'

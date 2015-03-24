@@ -14,41 +14,45 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
-    @post.entries << Entry.new
+    @post_form = PostForm.new
   end
 
   # GET /posts/1/edit
   def edit
+    @post_form = PostForm.build_from_post(@post)
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post_form = PostForm.new(post_params)
 
+    @post_form.save!
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @post_form.post, notice: 'Post was successfully created.' }
+      format.json { render :show, status: :created, location: @post_form.post }
+    end
+  rescue PostForm::Invalid => e
+    respond_to do |format|
+      format.html { render :new }
+      format.json { render json: @post_form.post.errors, status: :unprocessable_entity }
     end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @post_form = PostForm.build_from_post(@post)
+    @post_form.update!(post_params)
+
     respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      format.json { render :show, status: :ok, location: @post }
+    end
+  rescue PostForm::Invalid => e
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @post.errors, status: :unprocessable_entity }
     end
   end
 
@@ -70,7 +74,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(
+      params.require(:post_form).permit(
         :description,
         entries_attributes: [:path, :content]
       )
