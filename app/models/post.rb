@@ -22,8 +22,6 @@ class Post < ActiveRecord::Base
   def entries_attributes=(attributes)
     self.entries = attributes.map { |(i, attrs)|
       Entry.new(attrs)
-    }.select { |entry|
-      entry.present?
     }
   end
 
