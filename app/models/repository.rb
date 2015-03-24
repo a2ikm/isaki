@@ -34,6 +34,8 @@ class Repository
     index = repository.index
 
     entries.each do |entry|
+      entry.__send__ :before_commit
+
       oid = repository.write(entry.content, :blob)
       index.add(path: entry.path, oid: oid, mode: 0100644)
     end

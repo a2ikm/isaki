@@ -9,7 +9,9 @@ class Entry
     @content ||= nil
   end
 
-  def present?
-    path.present?
-  end
+  private
+
+    def before_commit
+      self.path = SecureRandom.hex + ".txt" if path.blank?
+    end
 end
