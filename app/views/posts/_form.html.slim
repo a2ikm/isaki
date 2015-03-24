@@ -1,12 +1,11 @@
-= bootstrap_form_for @post do |f|
-  - if @post.errors.any?
-    .panel.panel-danger
-      .panel-heading
-        h3.panel-title = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-      .panel-body
-        ul
-          - @post.errors.full_messages.each do |message|
-            li.text-danger = message
+- if @post_form.errors.any?
+  .panel.panel-danger
+    .panel-heading
+      h3.panel-title = "#{pluralize(@post_form.errors.count, "error")} prohibited this post from being saved:"
+    .panel-body
+      ul
+        - @post_form.errors.full_messages.each do |message|
+          li.text-danger = message
 
-  = react_component("PostForm", { post: @post.to_json, entries: @post.entries.to_json }, { prerender: true })
+= react_component("PostForm", { post_form: @post_form.to_json }, { prerender: true })
 

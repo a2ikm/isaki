@@ -9,6 +9,13 @@ class Entry
     @content ||= nil
   end
 
+  def to_h
+    {
+      "path"    => path,
+      "content" => content,
+    }
+  end
+
   private
 
     def before_commit

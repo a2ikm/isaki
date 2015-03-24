@@ -1,7 +1,7 @@
 var Post = React.createClass({
   getInitialState: function() {
     return {
-      description: this.props.post.description,
+      description: this.props.description,
     };
   },
 
@@ -12,8 +12,8 @@ var Post = React.createClass({
   },
 
   render: function() {
-    var id   = "post_description";
-    var name = "post[description]";
+    var id   = "post_form_description";
+    var name = "post_form[description]";
 
     return (
       <div className="form-group">

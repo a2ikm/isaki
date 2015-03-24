@@ -1,7 +1,5 @@
 class Post < ActiveRecord::Base
   before_create :initialize_name
-  before_create :create_repository
-  after_save :commit_entries
 
   def to_param
     name
@@ -19,12 +17,6 @@ class Post < ActiveRecord::Base
     @entries = entries
   end
 
-  def entries_attributes=(attributes)
-    self.entries = attributes.map { |(i, attrs)|
-      Entry.new(attrs)
-    }
-  end
-
   def title
     if entry = entries.find { |e| e.path.present? }
       entry.path
@@ -39,13 +31,5 @@ class Post < ActiveRecord::Base
 
     def initialize_name
       self.name = SecureRandom.hex
-    end
-
-    def create_repository
-      repository.create!
-    end
-
-    def commit_entries
-      repository.commit(entries)
     end
 end

@@ -21,11 +21,11 @@ var Entry = React.createClass({
   render: function() {
     var index = this.props.index;
 
-    var pathId   = "post_entries_attributes_"  + index + "_path";
-    var pathName = "post[entries_attributes][" + index + "][path]";
+    var pathId   = "post_form_entries_attributes_"  + index + "_path";
+    var pathName = "post_form[entries_attributes][" + index + "][path]";
 
-    var contentId   = "post_entries_attributes_"  + index + "_content";
-    var contentName = "post[entries_attributes][" + index + "][content]";
+    var contentId   = "post_form_entries_attributes_"  + index + "_content";
+    var contentName = "post_form[entries_attributes][" + index + "][content]";
 
     return (
       <div className="entry">

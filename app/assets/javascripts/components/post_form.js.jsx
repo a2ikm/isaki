@@ -1,9 +1,6 @@
 var PostForm = React.createClass({
   getInitialState: function() {
-    return {
-      post:    JSON.parse(this.props.post),
-      entries: JSON.parse(this.props.entries),
-    }
+    return JSON.parse(this.props.post_form)
   },
 
   addEntry: function(e) {
@@ -18,7 +15,7 @@ var PostForm = React.createClass({
   render: function() {
     return (
       <div>
-        <Post post={this.state.post} />
+        <Post description={this.state.description} />
         <EntryList entries={this.state.entries} />
         <div className="pull-left">
           <input type="button" value="Add file" onClick={this.addEntry} className="btn btn-default" />
