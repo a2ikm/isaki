@@ -32,7 +32,7 @@ class PostForm
   end
 
   def to_param
-    post.name
+    post.to_param
   end
 
   def to_hash
@@ -52,56 +52,62 @@ class PostForm
     end
   end
 
-  def update!(attributes = {})
-    attributes.each do |attr, value|
-      self.public_send("#{attr}=", value)
-    end if attributes
+  concerning :Persistence do
+    def update!(attributes = {})
+      attributes.each do |attr, value|
+        self.public_send("#{attr}=", value)
+      end if attributes
 
-    save!
-  end
-
-  def save!
-    Post.transaction do
-      validate!
-      new_record? ? _create : _update
-    end
-  end
-
-  def validate!
-    post.valid? && self.valid? || raise(Invalid)
-  end
-
-  private
-
-    def _create
-      save_post_record
-      create_repository
-      commit_entries
-      true
+      save!
     end
 
-    def _update
-      save_post_record
-      commit_entries
-      true
-    end
-
-    def save_post_record
-      post.description = description
-      post.save!
-    end
-
-    def create_repository
-      post.repository.create!
-    end
-
-    def commit_entries
-      post.repository.commit(entries)
-    end
-
-    def entries_cant_be_empty
-      if entries.any?(&:empty?)
-        errors.add(:base, "Files can't be blank.")
+    def save!
+      Post.transaction do
+        validate!
+        new_record? ? _create : _update
       end
     end
+
+    private
+
+      def _create
+        save_post_record
+        create_repository
+        commit_entries
+        true
+      end
+
+      def _update
+        save_post_record
+        commit_entries
+        true
+      end
+
+      def save_post_record
+        post.description = description
+        post.save!
+      end
+
+      def create_repository
+        post.repository.create!
+      end
+
+      def commit_entries
+        post.repository.commit(entries)
+      end
+  end
+
+  concerning :Validations do
+    def validate!
+      post.valid? && self.valid? || raise(Invalid)
+    end
+
+    private
+
+      def entries_cant_be_empty
+        if entries.any?(&:empty?)
+          errors.add(:base, "Files can't be blank.")
+        end
+      end
+  end
 end
