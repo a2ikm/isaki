@@ -3,6 +3,8 @@ header.header.clearfix
     h1 = link_to @post.title, @post
   div.header-menu.pull-right
     = link_to "Edit", edit_post_path(@post), class: "btn btn-default btn-sm"
+    '
+    = link_to "Delete", post_path(@post), class: "btn btn-default btn-sm", method: :delete
 
 .post
   - if @post.description.present?
