@@ -1,6 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.post-form-description {
+  background-color: #fafafa;
+  margin-bottom: 26px;
+
+  &:focus {
+    background-color: #ffffff;
+  }
+}
+
 .entry-form {
   border-radius-top-left:     4px;
   border-radius-top-right:    4px;

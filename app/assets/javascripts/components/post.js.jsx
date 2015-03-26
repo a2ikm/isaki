@@ -17,8 +17,7 @@ var Post = React.createClass({
 
     return (
       <div className="form-group">
-        <label className="control-label" htmlFor={id}>Description</label>
-        <textarea ref="description" className="form-control" name={name} id={id} value={this.state.description} onChange={this.changeDescription} />
+        <textarea ref="description" className="post-form-description form-control" name={name} id={id} value={this.state.description} onChange={this.changeDescription} placeholder="description" />
       </div>
     );
   }
