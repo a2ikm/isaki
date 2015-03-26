@@ -6,8 +6,9 @@ p = link_to "edit", edit_post_path(@post)
   - if @post.description.present?
     p.post-description = @post.description
 
-  .entries
+  .post-entries
     - @post.entries.each do |entry|
       .panel.panel-default
         .panel-heading = entry.path
-        .panel-body = entry.content
+        .panel-body
+          pre.post-entry-content = entry.content
