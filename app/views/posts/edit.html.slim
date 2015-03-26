@@ -1,4 +1,10 @@
-h1 Editing #{link_to @post.title, @post}
+header.header.clearfix
+  div.header-title.pull-left
+    h1
+      span.header-title-prefix.text-muted Editing
+      '
+      = link_to @post.title, @post
+  div.header-menu.pull-right
 
 = form_for @post_form, url: post_path(@post_form), method: "PATCH" do |f|
   == render 'form'
