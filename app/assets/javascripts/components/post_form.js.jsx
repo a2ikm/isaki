@@ -12,6 +12,14 @@ var PostForm = React.createClass({
     });
   },
 
+  getSubmitLabel: function() {
+    if (this.state.new_record) {
+      return "Create";
+    } else {
+      return "Update";
+    }
+  },
+
   render: function() {
     return (
       <div>
@@ -21,7 +29,7 @@ var PostForm = React.createClass({
           <input type="button" value="Add file" onClick={this.addEntry} className="btn btn-default" />
         </div>
         <div className="pull-right">
-          <input type="submit" value="Submit" className="btn btn-primary" />
+          <input type="submit" value={this.getSubmitLabel()} className="btn btn-primary" />
         </div>
       </div>
     );
