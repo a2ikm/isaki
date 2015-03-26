@@ -3,16 +3,21 @@
 
 .header {
   margin-bottom: 20px;
+
   .header-title {
+    margin-top: 10px;
+    margin-bottom: 0px;
+
     h1 {
       font-size: 24px;
-      margin-top: 10px;
+      height: 30px;
+      margin: 0px;
     }
   }
 
   .header-menu {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
 }
 
