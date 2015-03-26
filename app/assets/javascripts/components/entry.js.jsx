@@ -28,13 +28,13 @@ var Entry = React.createClass({
     var contentName = "post_form[entries_attributes][" + index + "][content]";
 
     return (
-      <div className="entry">
-        <div className="form-group">
-          <label className="control-label" htmlFor={pathId}>Path</label>
-          <input ref="path" className="form-control" type="text" name={pathName} id={pathId} value={this.state.path} onChange={this.changePath} />
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <div className="panel-title">
+            <input ref="path" className="form-control" type="text" name={pathName} id={pathId} value={this.state.path} onChange={this.changePath} placeholder="filename" />
+          </div>
         </div>
-        <div className="form-group">
-          <label className="control-label" htmlFor={contentId}>Content</label>
+        <div className="panel-body">
           <textarea ref="content" className="form-control" name={contentName} id={contentId} value={this.state.content} onChange={this.changeContent} />
         </div>
       </div>
