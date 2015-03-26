@@ -1,4 +1,4 @@
 h1 New post
 
-= bootstrap_form_for @post_form, url: posts_path do |f|
+= form_for @post_form, url: posts_path do |f|
   == render 'form', locals: { f: f}

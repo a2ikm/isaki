@@ -20,7 +20,6 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'turbolinks'
 gem 'quiet_assets'
 gem 'bootstrap-sass'
-gem 'bootstrap_form'
 
 # git
 gem 'rugged'
