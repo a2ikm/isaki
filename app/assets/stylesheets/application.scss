@@ -1,6 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.header {
+  margin-bottom: 20px;
+  .header-title {
+    h1 {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  }
+
+  .header-menu {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
 .post {
   .panel-body {
     padding: 0px;

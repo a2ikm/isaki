@@ -1,6 +1,8 @@
-h1 = link_to @post.title, @post
-
-p = link_to "edit", edit_post_path(@post)
+header.header.clearfix
+  div.header-title.pull-left
+    h1 = link_to @post.title, @post
+  div.header-menu.pull-right
+    = link_to "Edit", edit_post_path(@post), class: "btn btn-default btn-sm"
 
 .post
   - if @post.description.present?
