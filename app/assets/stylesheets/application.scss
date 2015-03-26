@@ -1,2 +1,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.entry-form {
+  border-radius-top-left:     4px;
+  border-radius-top-right:    4px;
+  border-radius-bottom-right: 0px;
+  border-radius-bottom-left:  0px;
+
+  .panel-heading {
+    padding: 5px;
+  }
+
+  .panel-body {
+    padding: 0px;
+  }
+
+  textarea {
+    border-width: 0px;
+    border-radius: 0px;
+    box-shadow: inherit;
+  }
+}
