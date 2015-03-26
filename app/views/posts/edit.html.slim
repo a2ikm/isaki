@@ -1,4 +1,11 @@
-h1 Editing #{link_to @post.title, @post}
+header.header.clearfix
+  div.header-title.pull-left
+    h1
+      span.header-title-prefix.text-muted Editing
+      '
+      = link_to @post.title, @post
+  div.header-menu.pull-right
+    = link_to "Delete", post_path(@post), class: "btn btn-default btn-sm", method: :delete
 
 = form_for @post_form, url: post_path(@post_form), method: "PATCH" do |f|
   == render 'form'
