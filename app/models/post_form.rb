@@ -39,6 +39,7 @@ class PostForm
     {
       description:  description,
       entries:      entries,
+      new_record:   new_record?,
     }
   end
 
