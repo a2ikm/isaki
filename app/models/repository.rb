@@ -58,8 +58,11 @@ class Repository
 
     repository.head.target.tree.each_blob do |entry|
       entries << Entry.new(
-        path:     entry[:name],
-        content:  repository.lookup(entry[:oid]).content.force_encoding("UTF-8")
+        repository: repository,
+        path:       entry[:name],
+        oid:        entry[:oid],
+        filemode:   entry[:filemode],
+        content:    repository.lookup(entry[:oid]).content.force_encoding("UTF-8")
       )
     end
 
