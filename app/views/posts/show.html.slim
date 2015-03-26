@@ -8,7 +8,7 @@ header.header.clearfix
 
 .post
   - if @post.description.present?
-    p.post-description = @post.description
+    p.post-description.text-muted = @post.description
 
   .post-entries
     - @post.entries.each do |entry|
