@@ -136,6 +136,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     react-source (0.13.1)
+    rouge (1.8.0)
     rugged (0.22.0b5)
     sass (3.4.13)
     sass-rails (5.0.1)
@@ -195,6 +196,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   react-rails (~> 1.0.0.pre)!
+  rouge
   rugged
   sass-rails (~> 5.0)
   slim-rails
