@@ -24,6 +24,9 @@ gem 'bootstrap-sass'
 # git
 gem 'rugged'
 
+# syntax highlight
+gem 'github-linguist', require: 'linguist'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
