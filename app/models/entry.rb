@@ -22,9 +22,24 @@ class Entry
     content.blank?
   end
 
+  def language
+    @language ||= detect_language
+  end
+
   private
 
     def before_commit
       self.path = SecureRandom.hex + ".txt" if path.blank?
+    end
+
+    def detect_language
+      return Linguist::Language["Text"].name unless repository
+
+      Linguist::LazyBlob.new(
+        repository,
+        oid,
+        path,
+        filemode
+      ).language.name
     end
 end
