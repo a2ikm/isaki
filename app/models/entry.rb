@@ -1,7 +1,7 @@
 class Entry
   include ActiveModel::Model
 
-  attr_accessor :path, :content
+  attr_accessor :path, :content, :oid, :filemode, :repository
 
   validates :content, presence: true
 
