@@ -35,7 +35,7 @@ var Entry = React.createClass({
         </div>
         <div className="form-group">
           <label className="control-label" htmlFor={contentId}>Content</label>
-          <textarea path="content" className="form-control" name={contentName} id={contentId} value={this.state.content} onChange={this.changeContent} />
+          <textarea ref="content" className="form-control" name={contentName} id={contentId} value={this.state.content} onChange={this.changeContent} />
         </div>
       </div>
     );
