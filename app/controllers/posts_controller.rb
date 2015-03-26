@@ -28,15 +28,9 @@ class PostsController < ApplicationController
     @post_form = PostForm.new(post_params)
 
     @post_form.save!
-    respond_to do |format|
-      format.html { redirect_to @post_form.post, notice: 'Post was successfully created.' }
-      format.json { render :show, status: :created, location: @post_form.post }
-    end
+    redirect_to @post_form.post, notice: 'Post was successfully created.'
   rescue PostForm::Invalid => e
-    respond_to do |format|
-      format.html { render :new }
-      format.json { render json: @post_form.post.errors, status: :unprocessable_entity }
-    end
+    render :new
   end
 
   # PATCH/PUT /posts/1
@@ -44,26 +38,16 @@ class PostsController < ApplicationController
   def update
     @post_form = PostForm.build_from_post(@post)
     @post_form.update!(post_params)
-
-    respond_to do |format|
-      format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-      format.json { render :show, status: :ok, location: @post }
-    end
+    redirect_to @post, notice: 'Post was successfully updated.'
   rescue PostForm::Invalid => e
-    respond_to do |format|
-      format.html { render :edit }
-      format.json { render json: @post.errors, status: :unprocessable_entity }
-    end
+    render :edit
   end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
   private
