@@ -1,6 +1,24 @@
 module LoginSession
   extend ActiveSupport::Concern
 
+  included do
+    helper_method :current_user, :signed_in?
+  end
+
+  def current_user
+    unless defined?(@current_user)
+      @current_user = nil
+      if user_id = current_user_id
+        @current_user = User.find_by(id: user_id)
+      end
+    end
+    @current_user
+  end
+
+  def signed_in?
+    !!current_user
+  end
+
   private
 
     def set_current_user_id(user_id)
@@ -21,5 +39,11 @@ module LoginSession
         httponly: true,
         secure:   true,
       }
+    end
+
+    def current_user_id
+      cookie = request.ssl? ? :secure_user_session : :user_session
+      key = cookies.signed[cookie]
+      session[key]
     end
 end

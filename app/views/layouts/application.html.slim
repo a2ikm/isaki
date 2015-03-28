@@ -16,6 +16,11 @@ html
           ul.nav.navbar-nav.navbar-right
             li = link_to new_post_path do
               span.glyphicon.glyphicon-plus
+            li
+              - if signed_in?
+                = current_user.email
+              - else
+                = link_to "Sign up", sign_up_path
     .container
       .row
         .col-md-12
