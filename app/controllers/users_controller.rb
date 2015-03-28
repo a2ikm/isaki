@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include LoginCookies
+
   def new
     @user = User.new
   end
@@ -6,6 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save!
+
+    reset_session
+    set_current_user_id(@user.id)
 
     redirect_to posts_url
 
