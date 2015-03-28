@@ -1,7 +1,7 @@
 class Login
   include ActiveModel::Model
 
-  attr_accessor :email, :password
+  attr_accessor :email, :password, :original_url
 
   def authenticate!
     user = User.find_by(email: email)
