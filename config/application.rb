@@ -34,3 +34,5 @@ module Isaki
     config.assets.paths << config.root.join("bower_components")
   end
 end
+
+require "isaki/exceptions"
