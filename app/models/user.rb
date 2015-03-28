@@ -29,6 +29,13 @@ class User < ActiveRecord::Base
     digest_bytes.unpack("H*").first
   end
 
+  def verify_password(password)
+    Rack::Utils.secure_compare(
+      password_digest,
+      self.class.generate_password_digest(password, password_salt)
+    )
+  end
+
   private
 
     def reset_password_salt_and_digest
