@@ -46,4 +46,11 @@ module LoginSession
       key = cookies.signed[cookie]
       session[key]
     end
+
+    def delete_current_user_id
+      [:secure_user_session, :user_session].each do |cookie|
+        key = cookies.signed[cookie]
+        session.delete(key)
+      end
+    end
 end

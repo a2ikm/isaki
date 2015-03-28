@@ -16,6 +16,12 @@ class SessionsController < ApplicationController
     render :new
   end
 
+  def destroy
+    delete_current_user_id
+
+    redirect_to posts_url
+  end
+
   private
 
     def login_params
