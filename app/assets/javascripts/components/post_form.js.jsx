@@ -4,11 +4,8 @@ var PostForm = React.createClass({
   },
 
   addEntry: function(e) {
-    var entries = this.state.entries;
-    entries.push(Entry.createBlank());
-
     this.setState({
-      entries: entries
+      entries: this.state.entries.concat([Entry.createBlank()])
     });
   },
 
