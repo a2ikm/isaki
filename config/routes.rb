@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   delete  "/posts/:name"        => "posts#destroy"
   get     "/posts/:name/edit"   => "posts#edit",    as: :edit_post
 
+  get     "/sign_up"            => "users#new",     as: :sign_up
+  post    "/sign_up"            => "users#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
