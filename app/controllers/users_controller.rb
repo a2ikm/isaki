@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include LoginCookies
+  include LoginSession
 
   def new
     @user = User.new
