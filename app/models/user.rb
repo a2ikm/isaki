@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
 
   before_save :reset_password_salt_and_digest, if: ->(user) { user.password.present? }
 
+  def self.find_by_login_or_email(login_or_email)
+    if login_or_email =~ /@/
+      find_by(email: login_or_email)
+    else
+      find_by(login: login_or_email)
+    end
+  end
+
   def self.generate_password_digest(password, password_salt)
     iterations = 20030
     key_len    = 16

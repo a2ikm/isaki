@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   private
 
     def login_params
-      params.require(:login).permit(:email, :password, :original_url)
+      params.require(:login).permit(:login_or_email, :password, :original_url)
     end
 
     def sanitize_url(url)
