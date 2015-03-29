@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322080755) do
+ActiveRecord::Schema.define(version: 20150329023304) do
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
     t.string   "name",        limit: 255,   null: false
@@ -21,5 +21,14 @@ ActiveRecord::Schema.define(version: 20150322080755) do
   end
 
   add_index "posts", ["name"], name: "index_posts_on_name", unique: true, using: :btree
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
+    t.string   "login",           limit: 255, null: false
+    t.string   "email",           limit: 255, null: false
+    t.string   "password_digest", limit: 255, null: false
+    t.string   "password_salt",   limit: 255, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
 end
