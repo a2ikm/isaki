@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :password
 
+  validates :login,     presence: true, uniqueness: true
   validates :email,     presence: true, uniqueness: true
   validates :password,  on: :create,
                         presence: true,
